@@ -1,0 +1,161 @@
+<body >
+    <header> <!--Acá va la cabecera (barras navegadoras) MENÚ-->
+        <nav class="navbar navbar-inverse navbar-fixed-top"  id="barraPrincipal">
+
+            <ul class="nav nav-pills">
+                <a class="navbar-brand" href="#/">
+                    <img id="logo" alt="Brand" src="img/logoPrueba2.2.png">
+                </a> 
+
+                <!--Menús desplegables-->
+                <div id="boton1" class="btn-group"> 
+                    <a href="#/profile" type="button" class="btn btn-default ">You</a>
+                    <button type="button" class="btn btn-default  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/cameraRoll">Camera Roll</a></li>
+                        <li><a href="#/photoStream">Photo Stream</a></li>
+                        <li><a href="#/albums">Albums</a></li>
+                        <li><a href="#/maps">Maps</a></li>
+                        <li><a href="#/favorites">Favorites</a></li>
+                        <li><a href="#/recentActivity">Recent Activity</a></li>
+                    </ul>
+                </div>
+
+                <div id="boton2" class="btn-group"> 
+                    <a href="#/people" type="button" class="btn btn-default">People</a>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                        <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/photoFrom">Photo from</a></li>
+                        <li><a href="#/photoOf">Photo of</a></li>
+                    </ul>
+                </div>
+
+                <div id="boton3" class="btn-group"> 
+                    <a href="#/explore" type="button" class="btn btn-default">Explore</a>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/recentPhotos">Recent Photos</a></li>
+                        <li><a href="#/world">World</a></li>
+                        <li><a href="#/cameraFinder">Camera Finder</a></li>
+                    </ul>
+                </div>
+
+                <div id="boton4" class="btn-group"> 
+                    <a href="#/upload" type="button" class="btn btn-default">Upload</a>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/add">Add</a></li>
+                        <li><a href="#/remove">Remove</a></li>
+                        <li><a href="#/changeName">Change name</a></li>
+                        <li><a href="#/addTags">Add tags</a></li>
+                        <li><a href="#/addPeople">Add people</a></li>
+                        <li><a href="#/addAlbum">Add to album</a></li>
+                        <li><a href="#/ownerSettings">Owner Settings</a></li>
+                    </ul>
+                </div>
+
+                <!--Bloque de búsqueda con botoncito-->
+                <form id="buscador" class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    
+                    <!-- Botón de 'usuario' -->
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Profile and settings">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#/edit">Edit Profile</a></li>
+                        <li><a href="#/login">Logout</a></li>
+                      </ul>
+                    </div>
+
+                </form>
+            </ul>
+        </nav>
+    </header> 
+
+    <section id='cuerpo'>
+        <style>
+          section {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+          }
+          #map {
+            height: 100%;
+            margin-left: 10%;
+          }
+        </style>
+
+        <h1>Explore the map!</h1>
+        <div id='map' class='container'>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.9838994278007!2d-70.68698119999999!3d-33.449726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c45f32edd7eb%3A0x570cc870711695a9!2sDepartamento+de+Ingenier%C3%ADa+Inform%C3%A1tica+USACH!5e0!3m2!1ses!2scl!4v1443417639612" width="900" height="500" frameborder="0" style="border: black" allowfullscreen></iframe>
+        </div>
+        
+
+        <script>
+            function initMap() {
+              var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 16
+              });
+              var infoWindow = new google.maps.InfoWindow({map: map});
+
+              // Try HTML5 geolocation.
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                  var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                  };
+
+                  infoWindow.setPosition(pos);
+                  infoWindow.setContent('You are here! :)');
+                  map.setCenter(pos);
+                }, function() {
+                  handleLocationError(true, infoWindow, map.getCenter());
+                });
+              } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+              }
+            }
+
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+              infoWindow.setPosition(pos);
+              infoWindow.setContent(browserHasGeolocation ?
+                                    'Error: The Geolocation service failed.' :
+                                    'Error: Your browser doesn\'t support geolocation.');
+            }
+
+        </script>
+
+        
+
+
+    </section>
+
+
+    <p></p>
+
+    <footer>
+        <ul class="navbar navbar-bottom"  id="barraPies">
+            &copy; Pro PhotoBook 2015 &middot; <a >Privacy</a> &middot;
+        </ul>          
+    </footer> <!--En los pies se importan y ejecutan los JavaScript-->
+</body>

@@ -1,0 +1,145 @@
+﻿<body>
+    <header> <!--BARRA DE NAVEGACIÓN-->
+        <nav class="navbar navbar-inverse navbar-fixed-top"  id="barraPrincipal">
+
+            <ul class="nav nav-pills">
+                <a class="navbar-brand" href="#/">
+                    <img id="logo" alt="Brand" src="img/logoPrueba2.2.png">
+                </a>
+
+                <!--Menús desplegables-->
+                <div id="boton1" class="btn-group"> 
+                    <a href="#/profile" type="button" class="btn btn-default ">You</a>
+                    <button type="button" class="btn btn-default  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/cameraRoll">Camera Roll</a></li>
+                        <li><a href="#/profile">Photo Stream</a></li>
+                        <li><a href="#/albums">Albums</a></li>
+                        <li><a href="#/mapa">Maps</a></li>
+                        <li><a href="#/favorites">Favorites</a></li>
+                        <li><a href="#/recentActivity">Recent Activity</a></li>
+                    </ul>
+                </div>
+
+                <div id="boton2" class="btn-group"> 
+                    <a href="#/people" type="button" class="btn btn-default">People</a>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                        <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/photoFrom">Photo from</a></li>
+                        <li><a href="#/photoOf">Photo of</a></li>
+                    </ul>
+                </div>
+
+                <div id="boton3" class="btn-group"> 
+                    <a href="#/explore" type="button" class="btn btn-default">Explore</a>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/recentPhotos">Recent Photos</a></li>
+                        <li><a href="#/world">World</a></li>
+                        <li><a href="#/cameraFinder">Camera Finder</a></li>
+                    </ul>
+                </div>
+
+                <div id="boton4" class="btn-group"> 
+                    <a href="#/upload" type="button" class="btn btn-default">Upload</a>
+                </div>
+
+                <!--Bloque de búsqueda con botoncito-->
+                <form id="buscador" class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    
+                    <!-- Botón de 'usuario' -->
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Profile and settings">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#/edit">Edit Profile</a></li>
+                        <li><a href="#/login">Logout</a></li>
+                      </ul>
+                    </div>
+
+                </form>
+            </ul>
+        </nav>
+    </header> 
+
+    <section id="cuerpo">
+        <!--CABECERA PÁGINA USUARIO-->
+        <div id="header" class="page-header">
+            <div class="media">
+                <div class="media-left">
+                    <a>
+                        <img class="img-thumbnail" src="img/logoPrueba6.png" alt="responsive"> <!--ARREGLAR TAMAÑO AVATAR-->
+                    </a>
+                </div>
+                <div class="media-body">
+                    <br>
+                    <h1 class="media-heading">{{response.nombreRealUser}} {{response.apellidoUser}}! <small>({{response.aliasUser}})</small></h1>
+                    <h4><span class="badge">{{response.cantidadSeguidores}} </span> Followers -- <span class="badge">{{response.cantidadSeguidos}}</span> Following </h4>  
+                </div>
+            </div>
+        </div>
+        
+        <!--
+        <h3>All registered users:</h3>
+        <ul>
+            <li ng-repeat="user in vm.allUsers">
+                {{user.username}} ({{user.firstName}} {{user.lastName}})
+                - <a ng-click="vm.deleteUser(user.id)">Delete</a>
+            </li>
+        </ul>
+        <p>&nbsp;</p>
+        -->
+
+        <!--POR CADA UNA DE LAS FOTOS DEL USUARIO ACTUAL-->
+        <div class="container">
+            <div  class="row"> <!--asumiendo que la info estará en el objeto user-->
+                <div class="col-sm-6 col-md-3" ng-repeat = "foto in fotoUser" >
+                    <a class="thumbnail" data-toggle="modal" data-target="#{{foto.idPhoto}}"> <!--foto.id  se cambia al id de la foto de usuario-->
+                        <img ng-src={{foto.direccionFisicaPhoto}} alt="..."> <!--foto.url se cambia a la url de la foto a mostrar-->
+                    </a>
+                    <div class="modal fade" id="{{foto.idPhoto}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <h3>"{{foto.tituloPhoto}}" <small>By <a>{{foto.usuarioiduser.aliasUser}}</a></small></h3>
+                                    <img ng-src={{foto.direccionFisicaPhoto}} class="img-responsive" alt="Imagen responsive">
+                                    <i>{{foto.descripcionPhoto}}</i> 
+                                    <br><br>
+                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"> {{foto.cantidadFavoritosPhoto}}</span><br>
+                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"> Comments</span><span class='badge'>{{foto.cantidadComentarios}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>             
+                </div>
+            </div>
+        </div>
+
+        
+        
+       
+        
+
+    </section>
+    <p></p>
+    <footer> <!--PIE DE PÁGINA-->
+        <ul class="navbar navbar-bottom"  id="barraPies">
+            &copy; Pro PhotoBook 2015 &middot; <a>Privacy</a> &middot;
+        </ul>          
+    </footer>
+</body>
+    

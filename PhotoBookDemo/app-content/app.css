@@ -1,0 +1,119 @@
+﻿p{
+	text-align: justify;
+	padding: 50px;
+	
+}
+
+
+.ng-animate.item:not(.left):not(.right) {
+  -webkit-transition: 0s ease-in-out left;
+  transition: 0s ease-in-out left
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img{
+	width: 60%;
+	margin: auto;
+}
+
+.foto{
+	display: inline-block;
+	width: 40%;
+	margin-right: 5%;
+}
+
+.foto2{
+	max-height: 300px; 
+}
+
+#barraPies{
+	padding: 10px;
+	margin: 0;
+	max-height: 30px;
+	text-align: center;
+}
+
+#boton1{
+	margin-top: 0.45%;
+}
+
+#boton2{
+	margin-top: 0.45%;
+}
+
+#boton3{
+	margin-top: 0.45%;
+}
+
+#boton4{
+	margin-top: 0.45%;
+}
+
+#cuerpo{
+	margin-top: 7%;
+}
+
+
+#form{
+	width: 30%;
+	height: 30%;
+	margin-left: 35%;
+	margin-top: 3%;
+}
+
+#foto{
+	margin-left: 25%;
+	margin-right: 25%;
+	max-width: 400px;
+	max-height: 200px
+	border: red solid;
+}
+
+#header{
+    background-image: url("../img/bubble.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	height:150px;
+}
+
+#homePhotos{
+	height: 60%;
+	width: 30%;
+}
+
+#inicioFoto{
+	margin-right: 6%;
+}
+
+#logo{
+	margin-top: -30%;
+}
+
+
+#myCarousel{
+	width: 90%;
+	min-width: 200px;
+	height: 20%;
+	min-height: 200px;
+    overflow: hidden;
+    margin-left: 5%; 
+    margin-right: 5%;
+}
+
+#nextButton{
+	color: gray;
+}
+
+#uploadJumbo{
+	margin-top: 10%;
+	margin-left: 10%; 
+    margin-right: 10%;
+}
+
+#welcomeJumbo{
+	margin-top: 10%;
+	margin-left: 25%; 
+    margin-right: 25%;
+    background-color: White;
+}
+
